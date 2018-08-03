@@ -1,0 +1,122 @@
+@media screen and (orientation: portrait) {
+    .imgContainer {
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 16px;
+        margin: 2%;
+        overflow: hidden;
+        object-fit: cover;
+        width: auto;
+        min-height: 33vh;
+        height: auto;
+        max-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image {
+        display: block;
+        border-radius: 16px;
+        width: 0%;
+        height: 0%;
+        opacity: 0.0;
+        -webkit-transition: 0.8s;
+        -moz-transition: 0.8s;
+        -o-transition: 0.8s;
+        transition: 0.8s;
+    }
+
+    .image.show {
+        display: block;
+        max-width: 80vw;
+        width: auto;
+        min-width: 40vw;
+    
+        min-height: 20vh;
+        height: auto;
+        max-height: 30vh;
+        opacity: 1;
+    }
+}
+
+@media (min-aspect-ratio: 21/35) and (max-aspect-ratio: 1/1) {
+    .imgContainer {
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 16px;
+        margin: 2%;
+        overflow: hidden;
+        object-fit: cover;
+        width: auto;
+        max-width: 70vmax;
+        min-height: 35vh;
+        height: auto;
+        max-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image {
+        display: block;
+        border-radius: 16px;
+        width: 0%;
+        height: 0%;
+        opacity: 0.0;
+        -webkit-transition: 0.8s;
+        -moz-transition: 0.8s;
+        -o-transition: 0.8s;
+        transition: 0.8s;
+    }
+
+    .image.show {
+        display: block;
+        max-width: 60vw;
+        width: auto;
+        min-width: 40vw;
+        min-height: 20vh;
+        height: auto;
+        max-height: 30vh;
+        opacity: 1;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .imgContainer {
+        margin: 2%;
+        overflow: hidden;
+        object-fit: cover;
+        width: auto;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image {
+        display: block;
+        border-radius: 16px;
+        width: 0%;
+        height: 0%;
+        opacity: 0.0;
+        -webkit-transition: 0.8s;
+        -moz-transition: 0.8s;
+        -o-transition: 0.8s;
+        transition: 0.8s;
+    }
+
+    .image.show {
+        display: block;
+        max-width: 47vw;
+        width: auto;
+        min-width: 20vw;
+    
+        min-height: 20vh;
+        height: auto;
+        max-height: 70vh;
+        opacity: 1;
+    }
+} 
+
