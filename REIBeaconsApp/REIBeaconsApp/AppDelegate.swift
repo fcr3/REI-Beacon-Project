@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     let realm = try! Realm()
     
     var manager : CBCentralManager!
-    let beaconManager = ESTBeaconManager()
+    var beaconManager : ESTBeaconManager!
     let proximityObserver = ProximityObserver(
         credentials: CloudCredentials(appID: "rei-beacon-app-iwl", appToken: "1f2ca4468134f76e44478897b3114042"),
         onError: { error in
@@ -38,14 +38,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Initial Setup of Firebase Connection
+        FirebaseApp.configure()
+        signIn()
+        
         // Setting up Bluetooth Delegate
         manager = CBCentralManager()
         manager.delegate = self
         
         // Beacon Manager
+        self.beaconManager = ESTBeaconManager()
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
-        beaconManager.stopMonitoringForAllRegions()
+        setUpMonitor()
+        // beaconManager.stopMonitoringForAllRegions()
         
         // Allowing Notifications to Appear
         let center = UNUserNotificationCenter.current()
@@ -61,15 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         // Assigning application to our own instance var
         currentApp = application
-        
-        // Initial Setup of Firebase Connection
-        FirebaseApp.configure()
-        signIn()
-        
-        if manager.state == .poweredOn {
-            settingUpObserver()
-            setUpMonitor()
-        }
+        settingUpObserver()
         
         let idArray : Results<idPlaceholder>? = realm.objects(idPlaceholder.self)
         if idArray != nil  && !(idArray?.isEmpty)!{
@@ -229,8 +227,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
                     }
                 }
             }
-            self.showNotification(with : "Press 4 in the Elevator and btw... Want a Drink?",
-                                  body: "Open the app for more options!")
+            self.showNotification(with : "We are on the 4th Floor!",
+                                  body: "Want a Drink? Open me for more options!")
         } else {
             showNotification(with : "Greetings from REI!",
                              body: "Please enter your employee login or your client Id to use this application!")

@@ -51,9 +51,26 @@ class SettingViewController: UIViewController {
             try self.realm.write {
                 emp.name = nameField.text!
             }
+            changeNameInClients()
             saveNameToDatabase()
         } catch {
             print(error)
+        }
+    }
+    
+    func changeNameInClients() {
+        let db = Database.database().reference().child("Clients")
+        print(emp.clientIds)
+        for id in emp.clientIds {
+            db.child(id).updateChildValues(["empName" : emp.name]) { (error, ref) in
+                if let error = error {
+                    SVProgressHUD.showError(withStatus: "Error writing to database")
+                    SVProgressHUD.dismiss(withDelay: 1)
+                    print(error)
+                    self.nameField.isEnabled = true
+                    self.saveButton.isEnabled = true
+                }
+            }
         }
     }
     
@@ -62,11 +79,13 @@ class SettingViewController: UIViewController {
         db.child(String(emp.email.split(separator: ".")[0])).setValue(emp.employeeDictionary()) { (error, reference) in
             if let err = error {
                 SVProgressHUD.showError(withStatus: "Error writing to database")
+                SVProgressHUD.dismiss(withDelay: 1)
                 print(err)
                 self.nameField.isEnabled = true
                 self.saveButton.isEnabled = true
             } else {
                 SVProgressHUD.showSuccess(withStatus: "Saved Name")
+                SVProgressHUD.dismiss(withDelay: 1)
                 self.navigationController?.popViewController(animated: true)
             }
         }

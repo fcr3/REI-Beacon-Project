@@ -43,7 +43,7 @@ class LogInViewController: UIViewController {
                         self.setUpNewPersistentEmp(em: self.emp.email, pass: self.emp.password, token: self.emp.token)
                     } else {
                         self.wipePersistentDatabase()
-                        SVProgressHUD.dismiss()
+                        SVProgressHUD.dismiss(withDelay: 1)
                     }
                 }
             }
@@ -74,6 +74,7 @@ class LogInViewController: UIViewController {
             Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if let err = error {
                     self.errorMessage(message: "User Does Not Exist")
+                    SVProgressHUD.dismiss(withDelay: 1)
                     print(err)
                 } else {
                     self.retrieveToken(em: self.emailTextField.text!, pass : self.passwordTextField.text!)
@@ -81,6 +82,7 @@ class LogInViewController: UIViewController {
             }
         } else {
             self.errorMessage(message: "Textfields not Filled")
+            SVProgressHUD.dismiss(withDelay: 1)
         }
     }
     
@@ -120,6 +122,7 @@ class LogInViewController: UIViewController {
             self.checkExistingData(who: newEmp)
         } catch {
             self.errorMessage(message: "Error writing to persistent database")
+            SVProgressHUD.dismiss(withDelay: 1)
         }
     }
     
@@ -222,10 +225,11 @@ class LogInViewController: UIViewController {
         db.child(emp.email.split(separator: ".")[0] + "").setValue(emp.employeeDictionary()) { (error, reference) in
             if let err = error {
                 self.errorMessage(message: "Error writing to persistent database")
+                SVProgressHUD.dismiss(withDelay: 1)
                 print(err)
             } else {
                 SVProgressHUD.showSuccess(withStatus: "Logged In")
-                SVProgressHUD.dismiss()
+                SVProgressHUD.dismiss(withDelay: 1)
                 self.logInButton.isEnabled = true
                 self.emailTextField.isEnabled = true
                 self.passwordTextField.isEnabled = true
@@ -240,6 +244,7 @@ class LogInViewController: UIViewController {
         db.child(emp.email.split(separator: ".")[0] + "").setValue(emp.employeeDictionary()) { (error, reference) in
             if let err = error {
                 self.errorMessage(message: "Error writing to persistent database")
+                SVProgressHUD.dismiss(withDelay: 1)
                 print(err)
             }
         }

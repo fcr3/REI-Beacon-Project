@@ -128,6 +128,7 @@ class ClientInfoViewController: UIViewController {
         let pasteItem = sender.title(for: .normal)!.split(separator: " ")[2]
         UIPasteboard.general.string = pasteItem + ""
         SVProgressHUD.showSuccess(withStatus: "Copied to Clipboard")
+        SVProgressHUD.dismiss(withDelay: 1)
     }
     
     @IBAction func editCancelButtonPressed(_ sender: UIButton) {
@@ -154,6 +155,7 @@ class ClientInfoViewController: UIViewController {
             prevClient = nil
         } else {
             SVProgressHUD.showError(withStatus: "Textfields Incorrectly Filled")
+            SVProgressHUD.dismiss(withDelay: 1)
         }
     }
     
@@ -193,7 +195,7 @@ class ClientInfoViewController: UIViewController {
                 self.editCancelButton.isEnabled = true
             } else {
                 SVProgressHUD.showSuccess(withStatus: "Saved")
-                SVProgressHUD.dismiss()
+                SVProgressHUD.dismiss(withDelay: 1)
                 self.toggleEnable(to: false)
                 self.toggleEditCancelButton()
                 self.editCancelButton.isEnabled = true

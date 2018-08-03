@@ -66,12 +66,17 @@ class DirectionsViewController: UIViewController {
         print("completed Direction viewDidLoad")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // checkLocation()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if !configured {
             let tbc = tabBarController as! MenuViewController
             self.client = tbc.client
+            // checkLocation()
             setTextandProgress(client == nil ? "start" : client.loc)
         }
         configured = true
@@ -151,6 +156,18 @@ class DirectionsViewController: UIViewController {
     }
     
     // MARK: - API Calls
+    
+    func checkLocation() {
+        if client != nil {return}
+        let db = Database.database().reference().child("Clients")
+        db.child(client.id).observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.value != nil, let snapVal = snapshot.value as? Dictionary<String,String> {
+                if self.client == nil {return}
+                self.client.loc = snapVal["loc"]!
+                self.client.visitedLocs = snapVal["visitedLocs"]!
+            }
+        }
+    }
     
     func updateLocations(where loc: String) {
         if client == nil {

@@ -48,6 +48,7 @@ class MakeNewClientViewController: UIViewController {
             saveDataToDatabase()
         } else {
             SVProgressHUD.showError(withStatus: "Textfields incorrectly Filled")
+            SVProgressHUD.dismiss(withDelay: 1)
             addNewClientButton.isEnabled = true
         }
     }
@@ -92,6 +93,7 @@ class MakeNewClientViewController: UIViewController {
         ref.setValue(cl.clientREIDictionary()) { (error, reference) in
             if let err = error {
                 SVProgressHUD.showError(withStatus: "Error writing to database")
+                SVProgressHUD.dismiss(withDelay: 1)
                 print(err)
                 self.addNewClientButton.isEnabled = true
             }else {
@@ -99,6 +101,7 @@ class MakeNewClientViewController: UIViewController {
                 newdb.child(self.emp.email.split(separator: ".")[0] + "").setValue(self.emp.employeeDictionary()) { (error, reference) in
                     if let err = error {
                         SVProgressHUD.showError(withStatus: "Error writing to database")
+                        SVProgressHUD.dismiss(withDelay: 1)
                         print(err)
                         self.addNewClientButton.isEnabled = true
                     } else {
@@ -123,6 +126,7 @@ class MakeNewClientViewController: UIViewController {
         someDelegate.nilSelectedClient()
         if createdClient {
             SVProgressHUD.showSuccess(withStatus: "Client Created")
+            SVProgressHUD.dismiss(withDelay: 1)
         }
     }
 
