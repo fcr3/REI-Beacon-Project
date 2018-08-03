@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A462B75865D5CB0C1286A3E /* Pods_REI_Employee_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1416C6FDE9D03F4CEAFF4088 /* Pods_REI_Employee_App.framework */; };
+		AA96AC5520D5634D00E4C664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA96AC5420D5634C00E4C664 /* AppDelegate.swift */; };
+		AA96AC5720D5634D00E4C664 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA96AC5620D5634D00E4C664 /* LogInViewController.swift */; };
+		AA96AC5A20D5634D00E4C664 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA96AC5820D5634D00E4C664 /* Main.storyboard */; };
+		AA96AC5C20D5635200E4C664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA96AC5B20D5635200E4C664 /* Assets.xcassets */; };
+		AA96AC5F20D5635200E4C664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA96AC5D20D5635200E4C664 /* LaunchScreen.storyboard */; };
+		AA96AC6B20D56AFA00E4C664 /* MakeNewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA96AC6A20D56AFA00E4C664 /* MakeNewClientViewController.swift */; };
+		AA96AC6D20D56B0A00E4C664 /* ClientInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA96AC6C20D56B0A00E4C664 /* ClientInfoViewController.swift */; };
+		AA96AC6F20D56B5600E4C664 /* ClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA96AC6E20D56B5600E4C664 /* ClientTableViewController.swift */; };
+		AA96AC7220D56BBD00E4C664 /* ClientInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA96AC7020D56BBD00E4C664 /* ClientInfoTableViewCell.swift */; };
+		AA96AC7320D56BBD00E4C664 /* ClientInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA96AC7120D56BBD00E4C664 /* ClientInfoTableViewCell.xib */; };
+		AA96AC7720D5BCE100E4C664 /* employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA96AC7620D5BCE100E4C664 /* employee.swift */; };
+		AA96AC7920D5BD2100E4C664 /* client.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA96AC7820D5BD2100E4C664 /* client.swift */; };
+		AAD80FB12106532300066C32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAD80FB02106532300066C32 /* GoogleService-Info.plist */; };
+		AAD80FB721068CED00066C32 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD80FB621068CED00066C32 /* SettingViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1416C6FDE9D03F4CEAFF4088 /* Pods_REI_Employee_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_REI_Employee_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E53EDAC28251FFF4AA25040 /* Pods-REI Employee App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REI Employee App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-REI Employee App/Pods-REI Employee App.debug.xcconfig"; sourceTree = "<group>"; };
+		A28F95267437DEC1126697ED /* Pods-REI Employee App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REI Employee App.release.xcconfig"; path = "Pods/Target Support Files/Pods-REI Employee App/Pods-REI Employee App.release.xcconfig"; sourceTree = "<group>"; };
+		AA96AC5120D5634C00E4C664 /* REI Employee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "REI Employee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA96AC5420D5634C00E4C664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA96AC5620D5634D00E4C664 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		AA96AC5920D5634D00E4C664 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AA96AC5B20D5635200E4C664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA96AC5E20D5635200E4C664 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA96AC6020D5635200E4C664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA96AC6A20D56AFA00E4C664 /* MakeNewClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeNewClientViewController.swift; sourceTree = "<group>"; };
+		AA96AC6C20D56B0A00E4C664 /* ClientInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoViewController.swift; sourceTree = "<group>"; };
+		AA96AC6E20D56B5600E4C664 /* ClientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewController.swift; sourceTree = "<group>"; };
+		AA96AC7020D56BBD00E4C664 /* ClientInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoTableViewCell.swift; sourceTree = "<group>"; };
+		AA96AC7120D56BBD00E4C664 /* ClientInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientInfoTableViewCell.xib; sourceTree = "<group>"; };
+		AA96AC7620D5BCE100E4C664 /* employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = employee.swift; sourceTree = "<group>"; };
+		AA96AC7820D5BD2100E4C664 /* client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = client.swift; sourceTree = "<group>"; };
+		AAD80FB02106532300066C32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AAD80FB621068CED00066C32 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		AAEC89E620DC638F006A194D /* REI Employee App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "REI Employee App.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA96AC4E20D5634C00E4C664 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A462B75865D5CB0C1286A3E /* Pods_REI_Employee_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		068866AD483199FC43B857E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1416C6FDE9D03F4CEAFF4088 /* Pods_REI_Employee_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2288DC24238D4F8C4F4577D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E53EDAC28251FFF4AA25040 /* Pods-REI Employee App.debug.xcconfig */,
+				A28F95267437DEC1126697ED /* Pods-REI Employee App.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AA96AC4820D5634C00E4C664 = {
+			isa = PBXGroup;
+			children = (
+				AA96AC5320D5634C00E4C664 /* REI Employee App */,
+				AA96AC5220D5634C00E4C664 /* Products */,
+				2288DC24238D4F8C4F4577D4 /* Pods */,
+				068866AD483199FC43B857E3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AA96AC5220D5634C00E4C664 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA96AC5120D5634C00E4C664 /* REI Employee App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA96AC5320D5634C00E4C664 /* REI Employee App */ = {
+			isa = PBXGroup;
+			children = (
+				AAEC89E620DC638F006A194D /* REI Employee App.entitlements */,
+				AA96AC6920D5689D00E4C664 /* Models */,
+				AA96AC6820D5689200E4C664 /* Contollers */,
+				AA96AC6720D5688100E4C664 /* Views */,
+				AA96AC5420D5634C00E4C664 /* AppDelegate.swift */,
+				AA96AC5B20D5635200E4C664 /* Assets.xcassets */,
+				AA96AC6020D5635200E4C664 /* Info.plist */,
+				AAD80FB02106532300066C32 /* GoogleService-Info.plist */,
+			);
+			path = "REI Employee App";
+			sourceTree = "<group>";
+		};
+		AA96AC6720D5688100E4C664 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA96AC5D20D5635200E4C664 /* LaunchScreen.storyboard */,
+				AA96AC5820D5634D00E4C664 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA96AC6820D5689200E4C664 /* Contollers */ = {
+			isa = PBXGroup;
+			children = (
+				AA96AC5620D5634D00E4C664 /* LogInViewController.swift */,
+				AA96AC6A20D56AFA00E4C664 /* MakeNewClientViewController.swift */,
+				AA96AC6C20D56B0A00E4C664 /* ClientInfoViewController.swift */,
+				AA96AC6E20D56B5600E4C664 /* ClientTableViewController.swift */,
+				AAD80FB621068CED00066C32 /* SettingViewController.swift */,
+			);
+			path = Contollers;
+			sourceTree = "<group>";
+		};
+		AA96AC6920D5689D00E4C664 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA96AC7020D56BBD00E4C664 /* ClientInfoTableViewCell.swift */,
+				AA96AC7120D56BBD00E4C664 /* ClientInfoTableViewCell.xib */,
+				AA96AC7620D5BCE100E4C664 /* employee.swift */,
+				AA96AC7820D5BD2100E4C664 /* client.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA96AC5020D5634C00E4C664 /* REI Employee App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA96AC6320D5635200E4C664 /* Build configuration list for PBXNativeTarget "REI Employee App" */;
+			buildPhases = (
+				402D7CAFEF9B8DC3D549CE74 /* [CP] Check Pods Manifest.lock */,
+				AA96AC4D20D5634C00E4C664 /* Sources */,
+				AA96AC4E20D5634C00E4C664 /* Frameworks */,
+				AA96AC4F20D5634C00E4C664 /* Resources */,
+				0A0870E974D8E4CFCD8095CC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "REI Employee App";
+			productName = "REI Employee App";
+			productReference = AA96AC5120D5634C00E4C664 /* REI Employee App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA96AC4920D5634C00E4C664 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Christian Reyes";
+				TargetAttributes = {
+					AA96AC5020D5634C00E4C664 = {
+						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = AA96AC4C20D5634C00E4C664 /* Build configuration list for PBXProject "REI Employee App" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA96AC4820D5634C00E4C664;
+			productRefGroup = AA96AC5220D5634C00E4C664 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA96AC5020D5634C00E4C664 /* REI Employee App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA96AC4F20D5634C00E4C664 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA96AC5F20D5635200E4C664 /* LaunchScreen.storyboard in Resources */,
+				AA96AC5C20D5635200E4C664 /* Assets.xcassets in Resources */,
+				AAD80FB12106532300066C32 /* GoogleService-Info.plist in Resources */,
+				AA96AC7320D56BBD00E4C664 /* ClientInfoTableViewCell.xib in Resources */,
+				AA96AC5A20D5634D00E4C664 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A0870E974D8E4CFCD8095CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-REI Employee App/Pods-REI Employee App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-REI Employee App/Pods-REI Employee App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		402D7CAFEF9B8DC3D549CE74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-REI Employee App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA96AC4D20D5634C00E4C664 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA96AC7220D56BBD00E4C664 /* ClientInfoTableViewCell.swift in Sources */,
+				AA96AC5720D5634D00E4C664 /* LogInViewController.swift in Sources */,
+				AA96AC6B20D56AFA00E4C664 /* MakeNewClientViewController.swift in Sources */,
+				AA96AC5520D5634D00E4C664 /* AppDelegate.swift in Sources */,
+				AA96AC7720D5BCE100E4C664 /* employee.swift in Sources */,
+				AAD80FB721068CED00066C32 /* SettingViewController.swift in Sources */,
+				AA96AC6D20D56B0A00E4C664 /* ClientInfoViewController.swift in Sources */,
+				AA96AC7920D5BD2100E4C664 /* client.swift in Sources */,
+				AA96AC6F20D56B5600E4C664 /* ClientTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AA96AC5820D5634D00E4C664 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA96AC5920D5634D00E4C664 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AA96AC5D20D5635200E4C664 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA96AC5E20D5635200E4C664 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA96AC6120D5635200E4C664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA96AC6220D5635200E4C664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA96AC6420D5635200E4C664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E53EDAC28251FFF4AA25040 /* Pods-REI Employee App.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "REI Employee App/REI Employee App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q6M663P6DL;
+				INFOPLIST_FILE = "REI Employee App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.REI.REI-Employee-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AA96AC6520D5635200E4C664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A28F95267437DEC1126697ED /* Pods-REI Employee App.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "REI Employee App/REI Employee App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q6M663P6DL;
+				INFOPLIST_FILE = "REI Employee App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.REI.REI-Employee-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA96AC4C20D5634C00E4C664 /* Build configuration list for PBXProject "REI Employee App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA96AC6120D5635200E4C664 /* Debug */,
+				AA96AC6220D5635200E4C664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA96AC6320D5635200E4C664 /* Build configuration list for PBXNativeTarget "REI Employee App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA96AC6420D5635200E4C664 /* Debug */,
+				AA96AC6520D5635200E4C664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA96AC4920D5634C00E4C664 /* Project object */;
+}
