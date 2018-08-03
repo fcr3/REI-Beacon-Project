@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="86" id="KGk-i7-Jjw" customClass="CustomCell" customModule="REIBeaconsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="85.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q6m-fx-BE3">
+                        <rect key="frame" x="85" y="10" width="242" height="65"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FBE-hA-ouC">
+                        <rect key="frame" x="12" y="10" width="65" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="feW-kC-1Kk"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like to drink?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZjO-7n-85u">
+                        <rect key="frame" x="97" y="18" width="219" height="49"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="q6m-fx-BE3" secondAttribute="bottom" constant="10.5" id="6Ug-7A-59T"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ZjO-7n-85u" secondAttribute="trailing" constant="11" id="Fcc-kb-SFA"/>
+                    <constraint firstItem="q6m-fx-BE3" firstAttribute="leading" secondItem="FBE-hA-ouC" secondAttribute="trailing" constant="8" id="Orb-QV-VUQ"/>
+                    <constraint firstItem="q6m-fx-BE3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QYS-eX-Ivz"/>
+                    <constraint firstAttribute="bottom" secondItem="FBE-hA-ouC" secondAttribute="bottom" constant="10.5" id="Trj-Bx-xdW"/>
+                    <constraint firstItem="q6m-fx-BE3" firstAttribute="leading" secondItem="FBE-hA-ouC" secondAttribute="trailing" constant="8" id="XiZ-OS-eZn"/>
+                    <constraint firstItem="FBE-hA-ouC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ZA4-hp-c8O"/>
+                    <constraint firstItem="ZjO-7n-85u" firstAttribute="leading" secondItem="FBE-hA-ouC" secondAttribute="trailing" constant="20" id="hMe-k0-htk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ZjO-7n-85u" secondAttribute="bottom" constant="8" id="htc-md-fpY"/>
+                    <constraint firstItem="ZjO-7n-85u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="iYG-z0-rIE"/>
+                    <constraint firstItem="FBE-hA-ouC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jYh-db-o4Y"/>
+                    <constraint firstAttribute="trailing" secondItem="q6m-fx-BE3" secondAttribute="trailing" constant="16" id="jhg-uk-5mP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="CustomCellImg" destination="FBE-hA-ouC" id="ICc-1k-Xqr"/>
+                <outlet property="CustomCellText" destination="ZjO-7n-85u" id="nVh-kd-zfa"/>
+                <outlet property="TextBackground" destination="q6m-fx-BE3" id="KM0-xp-7en"/>
+            </connections>
+            <point key="canvasLocation" x="-77" y="23"/>
+        </tableViewCell>
+    </objects>
+</document>

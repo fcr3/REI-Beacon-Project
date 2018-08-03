@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>264350328196-kj4s88l25h20od8thionh3g2bekkmrob.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.264350328196-kj4s88l25h20od8thionh3g2bekkmrob</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCtz9bG70OHcVcbvgK8ZkR5iw1ZW9vhIwM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>264350328196</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.REI.REIBeaconsApp</string>
+	<key>PROJECT_ID</key>
+	<string>experimental-database-fcr3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>experimental-database-fcr3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:264350328196:ios:bcb01ddc95709e7c</string>
+	<key>DATABASE_URL</key>
+	<string>https://experimental-database-fcr3.firebaseio.com</string>
+</dict>
+</plist>
