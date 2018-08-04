@@ -1,0 +1,73 @@
+/*
+  Green: #91DC5A
+  Blue: #006DF0
+*/
+
+@media screen and (min-aspect-ratio: 4/3) {
+  .formContainer {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 28vw;
+    background-color: rgba(0,0,0,0.1);
+    border: 2px solid #006DF0;
+    padding: 16px 0px 16px 0px;
+  }
+}
+
+/* aspect ratio -> width: height*/
+@media screen and (orientation: portrait), (max-aspect-ratio: 4/3) {
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.1);
+    border: 2px solid #006DF0;
+    padding: 16px 0px 16px 0px;
+  }
+}
+
+.form {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+h3 {
+  color: #006DF0;
+}
+
+.textField {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 2px solid #006DF0;
+  color: black;
+  width: 100%;
+  padding: 8px 16px 8px 16px;
+}
+
+.signInButton {
+  margin-top: 40px;
+  width: 70%;
+  height: 56px;
+  background-color: #006DF0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signInButton:hover {
+  cursor: pointer;
+}
