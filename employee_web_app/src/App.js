@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import logo from './assets/rei-white.png';
 import {Route} from 'react-router-dom';
 import SignInPage from './components/signInPage';
-//import HomePage from './components/homePage';
+import HomePage from './components/homePage';
 //import MakeNewClientPage from './components/makeNewClientPage.js';
 //import EditClientPage from './components/editClientPage.js';
 //import Settings from './components/settingsPage.js';
-import './styles/App.css';
 
 class App extends Component {
   render() {
@@ -19,11 +17,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Reyes Engineering</h1>
-        </header>
         <Route exact path="/" component={SignInPage} />
+        <Route exact path="/Home" component={HomePage} />
+        <Route exact path="/Home/NewClient" component={HomePage} />
       </div>
     );
   }

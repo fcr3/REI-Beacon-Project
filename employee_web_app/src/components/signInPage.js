@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {auth} from '../database/config';
+import logo from '../assets/rei-white.png';
+import '../styles/App.css';
 import '../styles/signIn.css';
 import { Redirect } from 'react-router-dom';
 
@@ -13,15 +15,22 @@ class SignInPage extends Component {
     this.state = {email: "", password: "", error: false};
   }
 
+  componentDidMount() {
+    auth.signOut().catch(error => {
+      console.log(error);
+    });
+  }
+
   signIn() {
+    console.log("Entered Sign In");
     auth.signInWithEmailAndPassword(this.state.email, this.state.password).
     then((result) => {
+      console.log("Sign In Successful");
       this.setState({...this.state, error: false});
     })
-    .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      this.setState({...this.state, error: true})
+    .catch((error) => {
+      console.log("Sign In Unsuccessful");
+      this.setState({...this.state, error: true});
     });
   }
 
@@ -34,14 +43,18 @@ class SignInPage extends Component {
   }
 
   render() {
-   if (auth.currentUser != null && !this.state.error) {return (<Redirect to="/Clients" />)}
+   if (auth.currentUser != null && !this.state.error) {return (<Redirect to="/Home" />)}
    return (
      <div className="formContainer">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="App-title">Welcome to Reyes Engineering</h1>
+      </header>
       <form className="form">
         <h3>Username:</h3> <input className="textField" onChange={this.handleEmailInput} type="text"/> <br/> <br/>
         <h3>Password:</h3> <input className="textField" onChange={this.handlePasswordInput} type="text"/> <br/>
       </form>
-      <div className="signInButton" onCLick={(e) => this.signIn()}>
+      <div className="signInButton" onClick={(e) => this.signIn()}>
         Sign In
       </div>
      </div>

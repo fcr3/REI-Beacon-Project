@@ -1,0 +1,38 @@
+.homepage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.displaycontainer {
+  animation-play-state: paused;
+  width: auto;
+  margin-right: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: margin-right 0.2s linear;
+}
+
+.shrink {
+  animation: shrinkAnimation 0.2s linear 0s forwards;
+}
+
+.grow {
+  animation: growAnimation 0.2s linear 0s forwards;
+}
+
+@keyframes shrinkAnimation {
+  from {margin-right: 0px;}
+  to {margin-right: 250px;}
+}
+
+@keyframes growAnimation {
+  from {margin-right: 250px;}
+  to {margin-right: 0px;}
+}

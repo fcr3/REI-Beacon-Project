@@ -1,0 +1,51 @@
+@media screen and (orientation: landscape) {
+  .clientcell {
+    color: #006DF0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    width: 90%;
+    margin-bottom: 16px;
+    padding: 16px 16px 16px 16px;
+    border: 2px solid #006DF0;
+    background-color: white;
+  }
+
+  .title {
+    font-size: 18pt;
+    font-size: 1.5em;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .clientcell:hover {
+    background-color: #006DF0;
+    color: white;
+    cursor: pointer;
+  }
+
+  .clientcell:last-child {
+    margin-bottom: 16px;
+  }
+}
+
+
+@media screen and (orientation: portrait) {
+  .clientcell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 80%;
+    padding: 8px 16px 8px 16px;
+    border: 2px solid #006DF0;
+  }
+}

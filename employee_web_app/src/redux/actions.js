@@ -1,14 +1,37 @@
 import {database, auth} from '../database/config';
 
+export const GET_EMP = "GET_EMP";
 export const GET_CLIENTS = "GET_CLIENTS";
-export const GET_SEL_CL = "GET_SEL_CL";
+export const SET_SEL_CL = "SET_SEL_CL";
+export const UPDATE_CL = "UPDATE_CL";
+export const ADD_CLIENT = "ADD_CLIENT";
+
+function handleReceivedEmp(emp) {
+  if (emp === undefined || emp === null) {
+    emp = {};
+  }
+  return {
+    type: GET_EMP,
+    emp
+  }
+}
 
 function handleSelectedClient(client) {
   if (client === undefined || client === null) {
-    client = [];
+    client = {};
   }
   return {
-    type: GET_SEL_CL,
+    type: SET_SEL_CL,
+    client
+  }
+}
+
+function handleUpdatedClient(client) {
+  if (client === undefined || client === null) {
+    client = {};
+  }
+  return {
+    type: UPDATE_CL,
     client
   }
 }
@@ -23,12 +46,59 @@ function handleReceivedClients(clients) {
   }
 }
 
+function handleAddClient(client) {
+  if (client === undefined || client === null) {
+    client = {};
+  }
+  return {
+    type: ADD_CLIENT,
+    client
+  }
+}
+
+export function getEmp() {
+  return dispatch => {
+    if (auth.currentUser === null || auth.currentUser === undefined) {
+      dispatch(handleReceivedEmp(null));
+    } else {
+      let email = auth.currentUser.email.split(".")[0] + "";
+      database.ref('/Employees/' + email).once('value').then((snap) => {
+        if (snap.val() === null) {return}
+        dispatch(handleReceivedEmp(snap.val()))
+      });
+    }
+  }
+}
+
 export function selectClient(client) {
   return dispatch => {
     if (auth.currentUser === null || auth.currentUser === undefined) {
       dispatch(handleSelectedClient(null));
     } else {
       dispatch(handleSelectedClient(client));
+    }
+  }
+}
+
+export function addClient(client) {
+  return dispatch => {
+    if (auth.currentUser === null || auth.currentUser === undefined){
+      dispatch(handleAddClient(null));
+    } else {
+      let reference = database.ref('/Clients').push();
+      reference.set({...client, id: reference.key})
+        .then((result) => {dispatch(handleAddClient({...client, id: reference.key}));})
+        .catch(error => {console.log(error);});
+    }
+  }
+}
+
+export function updateClient(client) {
+  return dispatch => {
+    if (auth.currentUser === null || auth.currentUser === undefined) {
+      dispatch(handleUpdatedClient(null));
+    } else {
+      dispatch(handleUpdatedClient(client));
     }
   }
 }
