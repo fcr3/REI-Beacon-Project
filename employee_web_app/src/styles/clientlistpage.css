@@ -1,13 +1,25 @@
-.clientlistpage {
-  flex-grow: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-left: 15.2%;
-  padding-top: 16px;
-  padding-left: 40px;
-  padding-right: 40px;
-  height: auto;
+@media screen and (min-aspect-ratio: 4/3) {
+  .clientlistpage {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 16px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .clientlistpage {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 16px;
+    height: auto;
+  }
 }

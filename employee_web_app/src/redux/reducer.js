@@ -1,17 +1,19 @@
-import {GET_EMP, GET_CLIENTS, SET_SEL_CL, UPDATE_CL, ADD_CLIENT} from './actions';
+import {LOADED, GET_EMP, GET_CLIENTS, SET_SEL_CL, UPDATE_CL, ADD_CLIENT} from './actions';
 
 const initialState = {
   emp: {},
   clients: [],
-  selectedClient: {
-    name: "No clients available",
-    date: "",
-    time: ""
-  }
+  loaded: false,
+  selectedClient: null
 }
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
+    case LOADED:
+      return {
+        ...state,
+        loaded: action.status
+      }
     case GET_EMP:
       return {
         ...state,
@@ -19,11 +21,13 @@ export default function reducer(state = initialState, action) {
       }
     case GET_CLIENTS:
       return {
+        ...state,
         clients: [...action.clients],
         selectedClient: state.selectedClient
       };
     case ADD_CLIENT:
       return {
+        ...state,
         clients: [...state.clients, action.client],
         selectClient: state.selectClient
       }
@@ -31,11 +35,13 @@ export default function reducer(state = initialState, action) {
       let filterClients = state.clients.filter((val) => val.id !== action.client.id);
       filterClients.push(action.client);
       return {
+        ...state,
         clients: filterClients,
         selectClient: state.selectedClient
       }
     case SET_SEL_CL:
       return {
+        ...state,
         clients: [...state.clients],
         selectedClient: action.client
       }

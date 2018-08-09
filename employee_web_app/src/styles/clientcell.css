@@ -15,7 +15,6 @@
 
   .title {
     font-size: 18pt;
-    font-size: 1.5em;
   }
 
   .description {
@@ -39,13 +38,39 @@
 
 @media screen and (orientation: portrait) {
   .clientcell {
+    color: #006DF0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: auto;
-    width: 80%;
-    padding: 8px 16px 8px 16px;
+    width: 70%;
+    margin-bottom: 16px;
+    padding: 16px 16px 16px 16px;
     border: 2px solid #006DF0;
+    background-color: white;
+  }
+
+  .title {
+    font-size: 11pt;
+    font-weight: bold;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 9pt;
+  }
+
+  .clientcell:hover {
+    background-color: #006DF0;
+    color: white;
+    cursor: pointer;
+  }
+
+  .clientcell:last-child {
+    margin-bottom: 16px;
   }
 }

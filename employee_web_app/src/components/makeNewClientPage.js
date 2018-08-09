@@ -3,12 +3,11 @@ import {connect} from 'react-redux';
 import {auth} from '../database/config';
 import '../styles/addclientpage.css';
 import {addClient} from '../redux/actions';
-import {Redirect, withRouter} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 class AddClientPage extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.key);
     this.addClient = this.addClient.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
@@ -16,6 +15,12 @@ class AddClientPage extends Component {
       date: "",
       time: "",
       room: ""
+    };
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.props = {
+      ...newProps
     };
   }
 
@@ -37,7 +42,7 @@ class AddClientPage extends Component {
     this.setState(copyState);
   }
 
-  addClient() {
+  addClient(e) {
     let client = {
       ...this.state,
       loc: "",
@@ -50,25 +55,40 @@ class AddClientPage extends Component {
       messages: ""
     }
     this.props.addClient(client);
+    this.setState({
+      ...this.state,
+      submitted: true
+    })
   }
 
   render() {
-    let classArray = ["addclientcontainer"]
+    let classArray1 = ["addclientcontainer"];
+    let classArray2 = ["addclientform"];
+    let classArray3 = ["addclientbutton"];
     if (window.location.pathname + "" === "/Home/NewClient") {
-      classArray.push("appear");
+      classArray1.push("appear");
     } else {
-      classArray.push("disappear");
+      //console.log(this.props.loaded);
+      if (this.props.loaded) {
+        classArray1.push("disappear");
+        classArray2.push("hide");
+        classArray3.push("hide");
+      }
+    }
+
+    if (this.state.submitted !== undefined && this.state.submitted) {
+      return (<Redirect to="/Home"/>)
     }
 
     return (
-      <div className={classArray.join(" ")}>
-        <form className="addclientform">
+      <div id="addclientcontainer" className={classArray1.join(" ")}>
+        <form className={classArray2.join(" ")}>
           Name: <input className="addclientfield" onChange={(e) => this.handleChange(e, "person")} type="text" /><br/>
           Meeting Date: <input className="addclientfield" onChange={(e) => this.handleChange(e, "date")} type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"/><br/>
           Meeting Time: <input className="addclientfield" onChange={(e) => this.handleChange(e, "time")} type="time" /><br/>
           Meeting Room: <input className="addclientfield" onChange={(e) => this.handleChange(e, "room")} type="text" /><br/>
         </form>
-        <div className="addclientbutton" onClick={this.addClient}>Add Client</div>
+        <div className={classArray3.join(" ")} onClick={this.addClient}>Add Client</div>
       </div>
     );
   }
@@ -76,8 +96,9 @@ class AddClientPage extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    emp: reduxState.emp
+    emp: reduxState.emp,
+    loaded: reduxState.loaded
   };
 }
 
-export default connect(mapStateToProps, {addClient})(withRouter(props => <AddClientPage {...props} />));
+export default connect(mapStateToProps, {addClient})(AddClientPage);

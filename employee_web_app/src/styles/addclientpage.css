@@ -1,8 +1,8 @@
-@media screen and (min-aspect-ratio: 4/3) {
+@media screen and (min-width: 900px) {
   .addclientcontainer {
-    animation-play-state: paused;
+    z-index: 8;
     position: fixed;
-    border-left: 2px solid black;
+    border-left: 2px solid white;
     visibility: hidden;
     overflow-x: hidden;
     width: 0;
@@ -12,6 +12,7 @@
     padding-left: 16px;
     padding-right: 16px;
     background-color: #006DF0;
+    box-shadow: -5px 0px 8px #888888;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -19,25 +20,13 @@
   }
 
   @keyframes appearAnimation {
-    from {
-      visibility: hidden;
-      width: 0;
-    }
-    to {
-      visibility: visible;
-      width: 250px;
-    }
+    from {visibility: hidden;width: 0;}
+    to {visibility: visible;width: 270px;}
   }
 
   @keyframes disappearAnimation {
-    from {
-      visibility: visible;
-      width: 250px;
-    }
-    to {
-      visibility: hidden;
-      width: 0;
-    }
+    from {visibility: visible;width: 270px;}
+    to {visibility: hidden;width: 0;}
   }
 
   .appear {
@@ -53,22 +42,33 @@
     padding: 16px 16px 16px 0px;
     display: flex;
     width: 100%;
+    overflow-x: hidden;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
   }
 
-  .addclientfield {
+  .hide {
+    visibility: collapse;
+    opacity: 0;
+  }
+
+  input {
     margin-top: 8px;
     font-size: 15pt;
+    width: 200px;
     padding: 8px 16px 8px 16px;
   }
 
   .addclientbutton {
     color: #006DF0;
+    opacity: 0.9;
+    transition: opacity 0.2s;
     height: 32px;
     padding-top: 8px;
     padding-bottom: 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     width: 100%;
     background-color: #91DC5A;
     display: flex;
@@ -78,78 +78,106 @@
   }
 
   .addclientbutton:hover {
-    background-color: blue;
+    opacity: 1;
     color: white;
     cursor: pointer;
   }
 }
 
-@media screen and (max-aspect-ratio: 4/3) {
+@media screen and (max-width: 900px) {
   .addclientcontainer {
     position: fixed;
-    right: 20%;
-    width: 20%;
+    border-left: 0px;
+    visibility: hidden;
+    overflow-x: hidden;
+    width: 0;
+    top: 0;
+    right: 0;
     height: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #006DF0;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
+    overflow-y: scroll;
+  }
+
+  @keyframes appearAnimation {
+    from {visibility: hidden;width: 0;}
+    to {visibility: visible;width: 100%;}
+  }
+
+  @keyframes disappearAnimation {
+    from {visibility: visible;width: 100%;}
+    to {visibility: hidden;width: 0;}
+  }
+
+  .appear {
+    animation: appearAnimation 0.2s linear 0s forwards;
+  }
+
+  .disappear {
+    animation: disappearAnimation 0.2s linear 0s forwards;
   }
 
   .addclientform {
-    padding: 16px 16px 16px 16px;
+    margin-top: 12vh;
+    color: white;
+    padding: 0;
+    padding-left: 16px;
     display: flex;
+    width: 80%;
+    overflow-x: hidden;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
   }
 
+  .addclientform::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .addclientform::-webkit-scrollbar-track {
+    opacity: 0;
+  }
+
+  .hide {
+    visibility: collapse;
+    opacity: 0;
+  }
+
   .addclientfield {
+    margin-top: 8px;
     font-size: 15pt;
+    width: 80%;
     padding: 8px 16px 8px 16px;
   }
 
   .addclientbutton {
+    color: white;
+    opacity: 0.9;
+    transition: opacity 0.2s;
     height: 32px;
-    width: 90%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-top: 16px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 16px;
+    width: 80%;
+    background-color: #91DC5A;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-}
 
-@media screen and (max-aspect-ratio: 1/1), (orientation: portrait) {
-  .addclientcontainer {
-    position: fixed;
-    right: 20%;
-    width: 20%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .addclientform {
-    padding: 16px 16px 16px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .addclientfield {
-    font-size: 15pt;
-    padding: 8px 16px 8px 16px;
-  }
-
-  .addclientbutton {
-    height: 32px;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .addclientbutton:hover {
+    opacity: 1;
+    color: white;
+    cursor: pointer;
   }
 }

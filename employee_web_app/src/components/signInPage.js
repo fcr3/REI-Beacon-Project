@@ -23,8 +23,8 @@ class SignInPage extends Component {
 
   signIn() {
     console.log("Entered Sign In");
-    auth.signInWithEmailAndPassword(this.state.email, this.state.password).
-    then((result) => {
+    auth.signInWithEmailAndPassword(this.state.email, this.state.password)
+    .then((result) => {
       console.log("Sign In Successful");
       this.setState({...this.state, error: false});
     })

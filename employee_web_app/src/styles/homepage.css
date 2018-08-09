@@ -8,31 +8,122 @@
   top: 0;
 }
 
-.displaycontainer {
-  animation-play-state: paused;
-  width: auto;
-  margin-right: 0px;
+.initialload {
+  position: absolute;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  transition: margin-right 0.2s linear;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  visibility: visible;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background: #006DF0;
+  left: 0;
+  top: 0;
+  animation: fadeOut 0.5s ease-in 2s forwards;
 }
 
-.shrink {
-  animation: shrinkAnimation 0.2s linear 0s forwards;
+.loadsymbol {
+  height: 10%;
+  width: 10%;
+  animation: loadsymbolAnimation 1.5s linear 0s infinite;
 }
 
-.grow {
-  animation: growAnimation 0.2s linear 0s forwards;
+@keyframes loadsymbolAnimation {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg); animation: fadeOut 0.5s linear 0s forwards}
 }
 
-@keyframes shrinkAnimation {
-  from {margin-right: 0px;}
-  to {margin-right: 250px;}
+@keyframes fadeOut {
+  from {opacity: 1; visibility: visible;}
+  to {opacity: 0; visibility: collapse;}
 }
 
-@keyframes growAnimation {
-  from {margin-right: 250px;}
-  to {margin-right: 0px;}
+@media screen and (min-width: 1230px) {
+  .displaycontainer {
+    animation-play-state: paused;
+    width: auto;
+    margin-left: 200px;
+    margin-right: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transition: margin-right 0.2s linear;
+  }
+
+  .shrink {
+    animation: shrinkAnimation 0.2s linear 0s forwards;
+  }
+
+  .grow {
+    animation: growAnimation 0.2s linear 0s forwards;
+  }
+
+  @keyframes shrinkAnimation {
+    from {margin-right: 0px;}
+    to {margin-right: 300px;}
+  }
+
+  @keyframes growAnimation {
+    from {margin-right: 300px;}
+    to {margin-right: 0px;}
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .displaycontainer {
+    animation-play-state: paused;
+    width: auto;
+    margin-left: 110px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transition: margin-right 0.2s linear;
+  }
+
+  .shrink {
+    animation: shrinkAnimation 0.2s linear 0s forwards;
+  }
+
+  .grow {
+    animation: growAnimation 0.2s linear 0s forwards;
+  }
+
+  @keyframes shrinkAnimation {
+    from {margin-right: 30px;}
+    to {margin-right: 330px;}
+  }
+
+  @keyframes growAnimation {
+    from {margin-right: 330px;}
+    to {margin-right: 30px;}
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .displaycontainer {
+    margin-top: 9vh;
+    animation-play-state: paused;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transition: margin-right 0.2s linear;
+  }
+
+  .shrink {
+    animation: none;
+  }
+
+  .grow {
+    animation: none;
+  }
 }

@@ -1,10 +1,18 @@
 import {database, auth} from '../database/config';
 
+export const LOADED = "LOADED";
 export const GET_EMP = "GET_EMP";
 export const GET_CLIENTS = "GET_CLIENTS";
 export const SET_SEL_CL = "SET_SEL_CL";
 export const UPDATE_CL = "UPDATE_CL";
 export const ADD_CLIENT = "ADD_CLIENT";
+
+function handleLoaded(status) {
+  return {
+    type: LOADED,
+    status
+  }
+}
 
 function handleReceivedEmp(emp) {
   if (emp === undefined || emp === null) {
@@ -18,7 +26,7 @@ function handleReceivedEmp(emp) {
 
 function handleSelectedClient(client) {
   if (client === undefined || client === null) {
-    client = {};
+    client = null;
   }
   return {
     type: SET_SEL_CL,
@@ -53,6 +61,26 @@ function handleAddClient(client) {
   return {
     type: ADD_CLIENT,
     client
+  }
+}
+
+export function initialLoad(status = true) {
+  return dispatch => {
+    dispatch(handleLoaded(status));
+  }
+}
+
+export function updateEmp(emp) {
+  return dispatch => {
+    if (auth.currentUser === null || auth.currentUser === undefined){
+      dispatch(handleReceivedEmp(null));
+    } else {
+      let email = auth.currentUser.email.split(".")[0] + "";
+      let reference = database.ref('/Employees/' + email );
+      reference.set({...emp})
+        .then((result) => {dispatch(handleReceivedEmp({...emp}));})
+        .catch(error => {console.log(error);});
+    }
   }
 }
 

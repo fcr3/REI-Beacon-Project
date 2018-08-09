@@ -1,15 +1,22 @@
-@media screen and (min-aspect-ratio: 4/3) {
+@media screen and (min-width: 1230px) {
   .navbar {
     position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 15%;
+    width: 200px;
     height: 100%;
     padding-top: 16px;
     background-color: #91DC5A;
-    border-right: 2px solid black;
+    border-right: 2px solid white;
+    box-shadow: 5px 0px 8px #888888;
+  }
+
+  .icon {
+    height: 30px;
+    margin-right: 16px;
+    fill: green;
   }
 
   .menuIconLan {
@@ -37,8 +44,80 @@
     padding-left: 24px;
     display: flex;
     text-decoration: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-top: 0px;
+    border-bottom: 2px solid white;
+  }
+
+  .link:first-child {
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+  }
+
+  .blue {
+    background-color: #006DF0;
+  }
+
+  .link:hover{
+    background-color: #006DF0;
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .navbar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80px;
+    height: 100%;
+    padding-top: 16px;
+    background-color: #91DC5A;
+    border-right: 2px solid white;
+    box-shadow: 5px 0px 8px #888888;
+  }
+
+  .icon {
+    height: 30px;
+    margin-right: 0px;
+    fill: green;
+  }
+
+  .menutitle {
+    visibility: collapse;
+    width: 0;
+  }
+
+  .menuIconLan {
+    height: 40px;
+  }
+
+  .menulinks {
+    background-color: grey;
+    margin-top: 24px;
+    overflow-x: hidden;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  .link {
+    background-color: grey;
+    color: white;
+    font-size: 0pt;
+    height: 56px;
+    width: 100%;
+    padding-left: 0;
+    display: flex;
+    text-decoration: none;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
     border-top: 0px;
     border-bottom: 2px solid white;
@@ -58,43 +137,20 @@
   }
 }
 
-@media screen and (max-aspect-ratio: 4/3) {
+@media screen and (max-width: 900px) {
   .navbar {
+    z-index: 10;
+    padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: auto;
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-
-  .menulinks {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: auto;
-    height: auto;
-  }
-
-  .link {
-    color: white;
-    font-size: 14pt;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .navbar {
-    display: none;
-    flex-direction: none;
-    align-items: none;
-    justify-content: none;
-    width: 100%;
-    height: auto;
     left: 0;
     top: 0;
+    box-shadow: 0px 0px 0px #888888;
+    border-bottom: 2px solid white;
   }
 
   .imgIcons {
@@ -102,37 +158,37 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    min-height: 50px;
+    height: auto;
+    width: 100%;
     left: 0;
     top: 0;
   }
 
-  .menuIconLan {
-    height: 80px;
-  }
-
-  .menulinks {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding-left: 16px;
-    padding-bottom: 16px;
-
-    height: 100%;
+  .menuLinks {
+    display: none;
+    visibility: collapse;
     width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
+    height: 0;
+    opacity: 0;
   }
 
-  .link {
-    color: white;
-    font-size: 14pt;
+  .menuIconPor1 {
+    height: 6vh;
+    margin-right: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .menuIconPor2 {
+    height: 3.5vh;
+    margin-left: 16px;
+    transform: scale(1);
+    transition: transform 0.2s;
+  }
+
+  .menuIconPor2:hover {
+    cursor: pointer;
+    transform: scale(1.35);
+    transition: transform 0.2s;
   }
 }

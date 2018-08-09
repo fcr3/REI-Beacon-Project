@@ -12,8 +12,8 @@ function description(client) {
   return description;
 }
 
-const ClientCell = ({client}) => (
-  <div className="clientcell">
+const ClientCell = ({client, func}) => (
+  <div className="clientcell" onClick={func}>
     <p className="title">{client.person}</p>
     {description(client)}
   </div>
