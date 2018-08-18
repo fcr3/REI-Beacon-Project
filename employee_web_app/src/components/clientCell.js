@@ -2,10 +2,18 @@ import React from 'react';
 import '../styles/clientcell.css';
 
 function description(client) {
+  var time = "";
+
+  if (client.time !== undefined && client.time !== null) {
+    time = client.time.split("-");
+    time = time[0] + ":" + time[1] + " " + time[2];
+  }
+
   let htmlPiece = (
     <div className="description">
       Date: {client.date}<br/>
-      Time: {client.time}
+      Time: {time}<br/>
+      Location: {client.loc !== "" ? client.loc : "Unknown"}<br/>
     </div>
   );
   let booleanDecision = (client.date === undefined) || (client.date === null);
@@ -13,8 +21,8 @@ function description(client) {
   return description;
 }
 
-const ClientCell = ({client, func, del}) => (
-  <div className="clientcell" onClick={func}>
+const ClientCell = ({client, func, del, newAttr}) => (
+  <div className={newAttr ? "clientcell green" : "clientcell"} onClick={func}>
     <p className="title">{client.person}</p>
     <div className="infoandbutton">
       {description(client)}

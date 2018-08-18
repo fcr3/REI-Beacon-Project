@@ -2,6 +2,7 @@ import {database, auth} from '../database/config';
 
 export const LOADED = "LOADED";
 export const DELETE = "DELETE";
+export const DEL_UP_ST = "DEL_UP_ST";
 export const GET_EMP = "GET_EMP";
 export const GET_CLIENTS = "GET_CLIENTS";
 export const SET_SEL_CL = "SET_SEL_CL";
@@ -31,6 +32,16 @@ function handleSelectedClient(client) {
   }
   return {
     type: SET_SEL_CL,
+    client
+  }
+}
+
+function handleDeleteUpdate(client) {
+  if (client === undefined || client === null) {
+    client = null;
+  }
+  return {
+    type: DEL_UP_ST,
     client
   }
 }
@@ -141,6 +152,17 @@ export function selectClient(client) {
       dispatch(handleSelectedClient(null));
     } else {
       dispatch(handleSelectedClient(client));
+    }
+  }
+}
+
+export function deleteUpdateStatus(client) {
+  return dispatch => {
+    if (auth.currentUser === null || auth.currentUser === undefined) {
+      dispatch(handleDeleteUpdate(null));
+    } else {
+      delete client.updated;
+      dispatch(handleDeleteUpdate(client));
     }
   }
 }

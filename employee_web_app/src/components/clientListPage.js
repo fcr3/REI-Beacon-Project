@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import '../styles/clientlistpage.css';
-import {getClients, selectClient, deleteClient, addUpdatedClient} from '../redux/actions';
+import {getClients, selectClient, deleteUpdateStatus, deleteClient, addUpdatedClient} from '../redux/actions';
 import ClientCell from './clientCell';
 import {database, auth} from '../database/config';
 import {withRouter} from 'react-router-dom';
@@ -13,8 +13,7 @@ class ClientListPage extends Component {
     this.goToEditPage = this.goToEditPage.bind(this);
     this.deleteClient = this.deleteClient.bind(this);
     this.state = {
-      selected: this.props.selectedClient !== null,
-      updated: []
+      selected: this.props.selectedClient !== null
     };
   }
 
@@ -52,7 +51,7 @@ class ClientListPage extends Component {
           } else {
             val.on('value', (snapshot) => {
               if (!snapshot || !snapshot.val()) {this.props.getClients();}
-              else {this.props.addUpdatedClient(snapshot.val());}
+              else {this.props.addUpdatedClient({...snapshot.val(), updated: "Updated"});}
             });
           }
         });
@@ -62,6 +61,7 @@ class ClientListPage extends Component {
 
   goToEditPage(client) {
     this.setState({selected: true});
+    this.props.deleteUpdateStatus(client);
     this.props.selectClient(client);
     this.props.history.push('/Home/EditClient/' + client.id);
   }
@@ -75,9 +75,10 @@ class ClientListPage extends Component {
   render() {
     let renderedClients = (<ClientCell client={{name: "No Clients Created"}} key={0} />);
     if (this.props.clients && this.props.clients.length !== 0) {
-      renderedClients = this.props.clients.map((val, index) => (
-        <ClientCell client={val} func={(e) => this.goToEditPage(val)} del={(e) => this.deleteClient(e, val)} key={index} />
-      ));
+      renderedClients = this.props.clients.map((val, index) => {
+        return (<ClientCell client={val} func={(e) => this.goToEditPage(val)}
+                           del={(e) => this.deleteClient(e, val)} key={index} newAttr={val.updated}/>);
+      });
     }
     return (
       <div className="clientlistpage">{renderedClients}</div>
@@ -93,5 +94,5 @@ function mapStateToProps(reduxState) {
   };
 }
 
-let functions = {getClients, selectClient, deleteClient, addUpdatedClient}
+let functions = {getClients, selectClient, deleteUpdateStatus, deleteClient, addUpdatedClient}
 export default connect(mapStateToProps, functions)(withRouter(props => <ClientListPage {...props} />));
