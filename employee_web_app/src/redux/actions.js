@@ -1,6 +1,7 @@
 import {database, auth} from '../database/config';
 
 export const LOADED = "LOADED";
+export const DELETE = "DELETE";
 export const GET_EMP = "GET_EMP";
 export const GET_CLIENTS = "GET_CLIENTS";
 export const SET_SEL_CL = "SET_SEL_CL";
@@ -31,6 +32,20 @@ function handleSelectedClient(client) {
   return {
     type: SET_SEL_CL,
     client
+  }
+}
+
+function handleDeleteClient(client, clientIds) {
+  if (client === undefined || client === null) {
+    client = null;
+  }
+  if (clientIds === undefined || clientIds === null) {
+    clientIds = null;
+  }
+  return {
+    type: DELETE,
+    client,
+    clientIds
   }
 }
 
@@ -98,6 +113,28 @@ export function getEmp() {
   }
 }
 
+export function deleteClient(client, emp) {
+  return dispatch => {
+    if (auth.currentUser === null || auth.currentUser === undefined) {
+      dispatch(handleDeleteClient(null));
+    } else {
+      let email = auth.currentUser.email.split(".")[0] + "";
+      var clientIDlist = emp.clientIds.split(",").filter((val) => val !== client.id);
+
+      database.ref('/Clients/' + client.id).set(null, (error) => {
+        if (error) {console.log(error);}
+        else {
+          database.ref('/Employees/' + email).set({...emp, clientIds: clientIDlist.join(",")}, (error) => {
+            if (error) {console.log(error);}
+            else {dispatch(handleDeleteClient(client, clientIDlist.join(",")));}
+          });
+        }
+      });
+
+    }
+  }
+}
+
 export function selectClient(client) {
   return dispatch => {
     if (auth.currentUser === null || auth.currentUser === undefined) {
@@ -108,15 +145,33 @@ export function selectClient(client) {
   }
 }
 
-export function addClient(client) {
+export function addClient(client, emp) {
   return dispatch => {
     if (auth.currentUser === null || auth.currentUser === undefined){
       dispatch(handleAddClient(null));
     } else {
       let reference = database.ref('/Clients').push();
-      reference.set({...client, id: reference.key})
-        .then((result) => {dispatch(handleAddClient({...client, id: reference.key}));})
-        .catch(error => {console.log(error);});
+      reference.set({...client, id: reference.key}, (error) => {
+          if (error) {console.log(error);}
+          let email = auth.currentUser.email.split(".")[0] + "";
+          let clientIDlist = emp.clientIds.split(",");
+          clientIDlist.push(reference.key);
+          emp.clientIds = clientIDlist.join(",");
+          database.ref('/Employees/' + email).set(emp, (error) => {
+            if (error) {console.log(error);}
+            dispatch(handleAddClient({...client, id: reference.key}));
+          });
+        });
+    }
+  }
+}
+
+export function addUpdatedClient(client) {
+  return dispatch => {
+    if (auth.currentUser === null || auth.currentUser === undefined) {
+      dispatch(handleUpdatedClient(null));
+    } else {
+      dispatch(handleUpdatedClient(client));
     }
   }
 }
@@ -126,7 +181,10 @@ export function updateClient(client) {
     if (auth.currentUser === null || auth.currentUser === undefined) {
       dispatch(handleUpdatedClient(null));
     } else {
-      dispatch(handleUpdatedClient(client));
+      database.ref('/Clients/' + client.id).set(client, (error) => {
+        if (error) {console.log(error);}
+        dispatch(handleUpdatedClient(client));
+      });
     }
   }
 }
@@ -146,7 +204,25 @@ export function getClients() {
           database.ref('/Clients/' + child).once('value').then(snapshot => {
             if (snapshot.val() === null) {return}
             clients.push(snapshot.val());
-            if (clients.length === clientIds.length) {dispatch(handleReceivedClients(clients))}
+            if (clients.length === clientIds.length) {
+              clients.sort((a, b) => {
+                if (a.date > b.date) {return 1;}
+                else if (a.date < b.date){return -1;}
+                else{
+                  var Atime = a.time.split("-");
+                  if (Atime[2] === "PM") {Atime[0] = parseInt(Atime, 10) + 12 + "";}
+                  Atime = parseInt(Atime.slice(0, 2).join(""), 10);
+                  var Btime = b.time.split("-");
+                  if (Btime[2] === "PM") {Btime[0] = parseInt(Btime, 10) + 12 + "";}
+                  Btime = parseInt(Btime.slice(0, 2).join(""), 10);
+
+                  if (Atime > Btime) {return 1;}
+                  else if (Atime < Btime) {return -1;}
+                  else {return 0;}
+                }
+              });
+              dispatch(handleReceivedClients(clients));
+            }
           });  });  });  }
   };
 }

@@ -2,21 +2,17 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {auth} from '../database/config';
-import {getEmp, getClients} from '../redux/actions';
+import {initialLoad} from '../redux/actions';
 import '../styles/homepage.css';
 import Navbar from './navbar';
-import ClientListPage from './clientListPage';
-import AddClientPage from './makeNewClientPage';
-import EditClientPage from './editClientPage';
-import SettingsPage from './settingsPage';
+import Menu from './menu';
 
 /** load icon from Designerz Base **/
 
-class HomePage extends Component {
+class MenuPage extends Component {
 
   componentDidMount() {
-    this.props.getEmp();
-    this.props.getClients();
+    this.props.initialLoad();
   }
 
   render() {
@@ -36,10 +32,7 @@ class HomePage extends Component {
       <div className="homepage">
         <Navbar />
         <div className={classArray.join(" ")}>
-          <ClientListPage />
-          <AddClientPage />
-          <EditClientPage />
-          <SettingsPage />
+          <Menu />
         </div>
       </div>
     );
@@ -53,4 +46,4 @@ function mapStateToProps(reduxState) {
   };
 }
 
-export default connect(mapStateToProps, {getEmp, getClients})(HomePage);
+export default connect(mapStateToProps, {initialLoad})(MenuPage);

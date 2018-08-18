@@ -25,20 +25,21 @@ class AddClientPage extends Component {
   }
 
   handleChange(e, key) {
+    let value = e.target.value;
     if (key === "time") {
-      let timeArr = key.split(":").map((val) => {
+      let timeArr = e.target.value.split(":").map((val) => {
         return val + "";
       });
       if (parseInt(timeArr[0], 10) > 12) {
-        key = (parseInt(timeArr[0], 10) % 12) + "-" + timeArr[1] + "-PM";
+        value = (parseInt(timeArr[0], 10) % 12) + "-" + timeArr[1] + "-PM";
       } else if (parseInt(timeArr[0], 10) === 0) {
-        key = "12-" + timeArr[1] + "-AM";
+        value = "12-" + timeArr[1] + "-AM";
       } else {
-        key = timeArr[0] + "-" + timeArr[1] + "-AM";
+        value = timeArr[0] + "-" + timeArr[1] + "-AM";
       }
     }
     let copyState = {...this.state};
-    copyState[key] = e.target.value;
+    copyState[key] = value;
     this.setState(copyState);
   }
 
@@ -54,7 +55,7 @@ class AddClientPage extends Component {
       visitedLocs: "",
       messages: ""
     }
-    this.props.addClient(client);
+    this.props.addClient(client, this.props.emp);
     this.setState({
       ...this.state,
       submitted: true

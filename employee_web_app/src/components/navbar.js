@@ -6,13 +6,15 @@ import add from '../assets/add.svg';
 import settings from '../assets/settings.svg';
 import menuIcon from '../assets/menuIcon.png';
 import '../styles/navbar.css';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
 
     //console.log(window.location.pathname);
+
+    this.toMenuPage = this.toMenuPage.bind(this);
 
     let selectedItem = ""
     let ind = 0;
@@ -41,6 +43,20 @@ class NavBar extends Component {
         height: window.innerHeight
       })
     });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", () => {
+      this.setState({
+        ...this.state,
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    });
+  }
+
+  toMenuPage(e) {
+    this.props.history.push("/Menu");
   }
 
   render() {
@@ -83,7 +99,7 @@ class NavBar extends Component {
     let portraitMenu = (
       <div className="navbar">
         <div className="imgIcons">
-          <img src={menuIcon} className="menuIconPor2" alt="Menu"/>
+          <img src={menuIcon} className="menuIconPor2" onClick={this.toMenuPage} alt="Menu"/>
           <img src={icon} className="menuIconPor1" alt="REI Icon"/>
         </div>
       </div>
@@ -94,4 +110,4 @@ class NavBar extends Component {
   }
 }
 
-export default connect(() => {return {}}, null)(NavBar);
+export default connect(() => {return {}}, null)(withRouter(props => <NavBar {...props} />));

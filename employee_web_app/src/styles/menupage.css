@@ -1,0 +1,87 @@
+@media screen and (max-width: 900px) {
+  .menucontainer {
+    margin-top: 8vh;
+    position: fixed;
+    border-left: 0px;
+    visibility: hidden;
+    overflow-x: hidden;
+    width: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #006DF0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: hidden;
+  }
+
+  .menuPageTitle {
+    color: white;
+    font-size: 3vh;
+    margin-left: 32px;
+  }
+
+  @keyframes menuAppearAnimation {
+    from {visibility: hidden;width: 0;}
+    to {visibility: visible;width: 100%;}
+  }
+
+  @keyframes menuDisappearAnimation {
+    from {visibility: visible;width: 100%;}
+    to {visibility: hidden;width: 0;}
+  }
+
+  .menuappear {
+    animation: menuAppearAnimation 0.2s linear 0s forwards;
+  }
+
+  .menudisappear {
+    animation: menuDisappearAnimation 0.2s linear 0s forwards;
+  }
+
+  .hide {
+    visibility: collapse;
+    opacity: 0;
+  }
+
+  .link {
+    background-color: grey;
+    color: white;
+    font-size: 0pt;
+    height: 56px;
+    width: 100%;
+    padding-left: 0;
+    display: flex;
+    text-decoration: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-top: 0px;
+    border-bottom: 2px solid white;
+  }
+
+  .link:first-child {
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+  }
+
+  .icon {
+    height: 30px;
+    margin-right: 0px;
+    margin-left: 12px;
+    fill: green;
+  }
+
+  .menuLinks {
+    display: none;
+    visibility: collapse;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+}

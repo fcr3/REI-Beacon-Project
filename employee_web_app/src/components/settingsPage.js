@@ -12,7 +12,8 @@ class SettingsPage extends Component {
     this.updateEmp = this.updateEmp.bind(this);
     this.logOut = this.logOut.bind(this);
     this.state = {
-      ...this.props.emp
+      ...this.props.emp,
+      name: this.props.emp.name ? this.props.emp.name : ''
     };
   }
 
@@ -64,6 +65,8 @@ class SettingsPage extends Component {
       }
     }
 
+    let name = this.state.name;
+
     if (this.state.loggedOut !== undefined && this.state.loggedOut) {
       return (<Redirect to="/"/>)
     }
@@ -71,9 +74,9 @@ class SettingsPage extends Component {
     return (
       <div id="addclientcontainer" className={classArray1.join(" ")}>
         <form className={classArray2.join(" ")}>
-          Name: <input className="addclientfield" onChange={(e) => this.handleChange(e, "name")} type="text" /><br/>
+          Name: <input className="addclientfield" onChange={(e) => this.handleChange(e, "name")} type="text" value={name}/><br/>
         </form>
-        <div className={classArray3.join(" ")} onClick={this.updateEmp}>Add Client</div>
+        <div className={classArray3.join(" ")} onClick={this.updateEmp}>Save</div>
         <div className={classArray3.join(" ")} onClick={this.logOut}>Log Out</div>
       </div>
     );
