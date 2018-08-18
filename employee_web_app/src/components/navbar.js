@@ -67,7 +67,7 @@ class NavBar extends Component {
       </Link>),
       (<Link to="/Home/NewClient" key="2" className="link">
         <img className="icon" src={add} alt="P" />
-        <p className="menutitle">Add Client</p>
+        <p className="menutitle">Add</p>
       </Link>),
       (<Link to="/Home/Settings" key="3" className="link">
         <img className="icon" src={settings} alt="P" />

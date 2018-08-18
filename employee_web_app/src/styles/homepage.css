@@ -120,6 +120,9 @@
 
   .shrink {
     animation: none;
+    visibility: collapse;
+    overflow: hidden;
+    height: 0;
   }
 
   .grow {
