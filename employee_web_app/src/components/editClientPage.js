@@ -108,6 +108,7 @@ class EditClientPage extends Component {
     return (
       <div id="addclientcontainer" className={classArray1.join(" ")}>
         <form className={classArray2.join(" ")}>
+          ID: <input className="addclientfield" type="text" value={this.state.id} readOnly={true} /><br/>
           Name: <input className="addclientfield" onChange={(e) => this.handleChange(e, "person")} type="text"
                        value={this.state.person}/><br/>
           Meeting Date: <input className="addclientfield" onChange={(e) => this.handleChange(e, "date")}

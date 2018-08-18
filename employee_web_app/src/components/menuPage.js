@@ -10,15 +10,30 @@ import Menu from './menu';
 /** load icon from Designerz Base **/
 
 class MenuPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {width: window.innerWidth};
+  }
 
   componentDidMount() {
     this.props.initialLoad();
+    window.addEventListener("resize", () => {
+      this.setState({width: window.innerWidth});
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", () => {
+      this.setState({width: window.innerWidth});
+    });
   }
 
   render() {
     if (auth.currentUser === null || auth.currentUser === undefined) {
       return (<Redirect to="/" />);
     }
+
+    if (this.state.width >= 900) {return (<Redirect to="/Home"/>)}
 
     let classArray = ["displaycontainer"];
     if (this.props.loaded) {
