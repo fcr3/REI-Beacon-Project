@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {auth} from '../database/config';
 import '../styles/addclientpage.css';
-import {initialLoad, updateEmp, getEmp} from '../redux/actions';
+import {initialLoad, updateEmp, getEmp, eraseState} from '../redux/actions';
 import {Redirect} from 'react-router-dom';
 
 class SettingsPage extends Component {
@@ -41,6 +41,7 @@ class SettingsPage extends Component {
     this.props.initialLoad(false);
     auth.signOut()
     .then(() => {
+      this.props.eraseState();
       this.setState({
         loggedOut: true
       });
@@ -90,4 +91,4 @@ function mapStateToProps(reduxState) {
   };
 }
 
-export default connect(mapStateToProps, {initialLoad, updateEmp, getEmp})(SettingsPage);
+export default connect(mapStateToProps, {initialLoad, updateEmp, getEmp, eraseState})(SettingsPage);

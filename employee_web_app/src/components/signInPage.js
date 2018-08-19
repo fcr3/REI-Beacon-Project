@@ -62,4 +62,4 @@ class SignInPage extends Component {
   }
 }
 
-export default connect(() => {return {}}, null)(SignInPage);
+export default connect(() => {return {}}, {})(SignInPage);

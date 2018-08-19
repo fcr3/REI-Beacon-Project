@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {auth, database} from '../database/config';
 import icon from '../assets/rei-white.png';
 import person from '../assets/person.svg';
 import add from '../assets/add.svg';
 import settings from '../assets/settings.svg';
 import menuIcon from '../assets/menuIcon.png';
+import {eraseState} from '../redux/actions';
 import '../styles/navbar.css';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, withRouter, Redirect} from 'react-router-dom';
 
 class NavBar extends Component {
   constructor(props) {
@@ -20,7 +22,7 @@ class NavBar extends Component {
     let ind = 0;
     let pic = null;
     if (window.location.pathname + "" === "/Home") {selectedItem = "Clients"; ind = 0; pic = person}
-    else if (window.location.pathname + "" === "/Home/NewClient") {selectedItem = "Add Client"; ind = 1; pic = add}
+    else if (window.location.pathname + "" === "/Home/NewClient") {selectedItem = "Add"; ind = 1; pic = add}
     else if (window.location.pathname + "" === "/Home/Settings"){selectedItem = "Settings"; ind = 2; pic = settings}
     else {ind = 3;}
 
@@ -43,6 +45,19 @@ class NavBar extends Component {
         height: window.innerHeight
       })
     });
+    let email = auth.currentUser.email.split(".")[0] + "";
+    database.ref('/Employees/' + email).on('value', (snapshot) => {
+      if (!this.props.emp) {return;}
+      if (!snapshot || !snapshot.val() || snapshot.val().current !== this.props.emp.current) {
+        auth.signOut()
+          .then((result) => {
+            this.props.eraseState();
+            this.setState({loggedOut: true});
+            this.props.history.push("/");
+          })
+          .catch((error) => {console.log(error);});
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -53,6 +68,9 @@ class NavBar extends Component {
         height: window.innerHeight
       });
     });
+    let email = auth.currentUser ? auth.currentUser.email.split(".")[0] + "" : null;
+    if (email === null) {return;}
+    database.ref('/Employees/' + email).off();
   }
 
   toMenuPage(e) {
@@ -60,6 +78,8 @@ class NavBar extends Component {
   }
 
   render() {
+    if (!auth.currentUser && this.state.loggedOut !== undefined) {return (<Redirect to="/"/>);}
+
     var linkArray = [
       (<Link to="/Home" key="1" className="link">
         <img className="icon" src={person} alt="P" />
@@ -110,4 +130,10 @@ class NavBar extends Component {
   }
 }
 
-export default connect(() => {return {}}, null)(withRouter(props => <NavBar {...props} />));
+function mapStateToProps(reduxState) {
+  return {
+    emp: reduxState.emp
+  };
+}
+
+export default connect(mapStateToProps, {eraseState})(withRouter(props => <NavBar {...props} />));

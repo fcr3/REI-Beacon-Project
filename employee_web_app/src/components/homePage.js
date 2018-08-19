@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {auth} from '../database/config';
-import {getEmp, getClients} from '../redux/actions';
+import {auth, database} from '../database/config';
+import {getEmp, eraseState, getClients, getEmpAndUpdateCurrent} from '../redux/actions';
 import '../styles/homepage.css';
 import Navbar from './navbar';
 import ClientListPage from './clientListPage';
@@ -15,8 +15,31 @@ import SettingsPage from './settingsPage';
 class HomePage extends Component {
 
   componentDidMount() {
-    this.props.getEmp();
+    if (this.props.instance !== "") {
+      this.props.getEmp();
+      let email = auth.currentUser ? auth.currentUser.email.split(".")[0] + "" : null;
+      if (email === null) {return;}
+      database.ref('/Employees/' + email).on('value', (snapshot) => {
+        if (!this.props.emp) {return;}
+        if (!snapshot || !snapshot.val() || snapshot.val().current !== this.props.emp.current) {
+          auth.signOut()
+            .then((result) => {
+              this.props.eraseState();
+              this.setState({loggedOut: true});
+              this.props.history.push("/");
+            })
+            .catch((error) => {console.log(error);});
+        }
+      });
+    }
+    else {this.props.getEmpAndUpdateCurrent();}
     this.props.getClients();
+  }
+
+  componentWillUnmount() {
+    let email = auth.currentUser ? auth.currentUser.email.split(".")[0] + "" : null;
+    if (email === null) {return;}
+    database.ref('/Employees/' + email).off();
   }
 
   render() {
@@ -49,8 +72,10 @@ class HomePage extends Component {
 
 function mapStateToProps(reduxState) {
   return {
+    emp: reduxState.emp,
+    instance: reduxState.instance,
     loaded: reduxState.loaded
   };
 }
 
-export default connect(mapStateToProps, {getEmp, getClients})(HomePage);
+export default connect(mapStateToProps, {getEmp, getClients, eraseState, getEmpAndUpdateCurrent})(HomePage);

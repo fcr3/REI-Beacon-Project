@@ -2,17 +2,37 @@ import {database, auth} from '../database/config';
 
 export const LOADED = "LOADED";
 export const DELETE = "DELETE";
+export const ERASE = "ERASE";
 export const DEL_UP_ST = "DEL_UP_ST";
 export const GET_EMP = "GET_EMP";
+export const GET_EMP_WITH_CURR = "GET_EMP_WITH_CURR";
 export const GET_CLIENTS = "GET_CLIENTS";
 export const SET_SEL_CL = "SET_SEL_CL";
 export const UPDATE_CL = "UPDATE_CL";
 export const ADD_CLIENT = "ADD_CLIENT";
 
+function genKey() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 30; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+
+  return "web-" + text;
+}
+
 function handleLoaded(status) {
   return {
     type: LOADED,
     status
+  }
+}
+
+function handleEraseState() {
+  console.log("Logged Out");
+  return {
+    type: ERASE
   }
 }
 
@@ -22,6 +42,16 @@ function handleReceivedEmp(emp) {
   }
   return {
     type: GET_EMP,
+    emp
+  }
+}
+
+function handleReceivedEmpWithCurr(emp) {
+  if (emp === undefined || emp === null) {
+    emp = {};
+  }
+  return {
+    type: GET_EMP_WITH_CURR,
     emp
   }
 }
@@ -96,6 +126,12 @@ export function initialLoad(status = true) {
   }
 }
 
+export function eraseState() {
+  return dispatch => {
+    dispatch(handleEraseState());
+  }
+}
+
 export function updateEmp(emp) {
   return dispatch => {
     if (auth.currentUser === null || auth.currentUser === undefined){
@@ -117,8 +153,26 @@ export function getEmp() {
     } else {
       let email = auth.currentUser.email.split(".")[0] + "";
       database.ref('/Employees/' + email).once('value').then((snap) => {
+        if (snap.val() === null) {return;}
+        dispatch(handleReceivedEmp(snap.val()));
+      });
+    }
+  }
+}
+
+export function getEmpAndUpdateCurrent() {
+  return dispatch => {
+    if (auth.currentUser === null || auth.currentUser === undefined) {
+      dispatch(handleReceivedEmp(null));
+    } else {
+      let email = auth.currentUser.email.split(".")[0] + "";
+      database.ref('/Employees/' + email).once('value').then((snap) => {
         if (snap.val() === null) {return}
-        dispatch(handleReceivedEmp(snap.val()))
+        let current = genKey();
+        console.log(current);
+        database.ref('/Employees/' + email ).set({...snap.val(), current})
+          .then((result) => {dispatch(handleReceivedEmpWithCurr({...snap.val(), current}));})
+          .catch(error => {console.log(error);});
       });
     }
   }

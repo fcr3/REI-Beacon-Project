@@ -1,11 +1,12 @@
-import {LOADED, DELETE, DEL_UP_ST, GET_EMP, GET_CLIENTS, SET_SEL_CL, UPDATE_CL, ADD_CLIENT} from './actions';
+import {LOADED, ERASE, DELETE, DEL_UP_ST, GET_EMP, GET_EMP_WITH_CURR, GET_CLIENTS, SET_SEL_CL, UPDATE_CL, ADD_CLIENT} from './actions';
 
 const initialState = {
   emp: {},
   clients: [],
   loaded: false,
   selectedClient: null,
-  updated: []
+  updated: [],
+  instance: ""
 }
 
 export default function reducer(state = initialState, action) {
@@ -15,6 +16,8 @@ export default function reducer(state = initialState, action) {
         ...state,
         loaded: action.status
       }
+    case ERASE:
+      return initialState;
     case DELETE:
       return {
         ...state,
@@ -48,6 +51,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         emp: action.emp
+      }
+    case GET_EMP_WITH_CURR:
+      return {
+        ...state,
+        emp: action.emp,
+        instance: action.emp.current
       }
     case GET_CLIENTS:
       return {
