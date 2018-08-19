@@ -52,7 +52,7 @@ class SignInPage extends Component {
       </header>
       <form className="form">
         <h3>Username:</h3> <input className="textField" onChange={this.handleEmailInput} type="text"/> <br/> <br/>
-        <h3>Password:</h3> <input className="textField" onChange={this.handlePasswordInput} type="text"/> <br/>
+        <h3>Password:</h3> <input className="textField" onChange={this.handlePasswordInput} type="password"/> <br/>
       </form>
       <div className="signInButton" onClick={(e) => this.signIn()}>
         Sign In
