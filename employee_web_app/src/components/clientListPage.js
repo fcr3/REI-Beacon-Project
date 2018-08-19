@@ -23,6 +23,8 @@ class ClientListPage extends Component {
   }
 
   componentWillUnmount() {
+    if (auth.currentUser === null || auth.currentUser === undefined) {return;}
+
     let email = auth.currentUser.email.split(".")[0] + "";
     var listenerArray = [database.ref('/Employees/' + email)];
     this.props.clients.forEach((val) => {
