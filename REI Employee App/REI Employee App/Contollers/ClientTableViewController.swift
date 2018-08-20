@@ -4,8 +4,6 @@
 //
 //  Created by Flaviano Reyes on 6/16/18.
 //  Copyright © 2018 Christian Reyes. All rights reserved.
-//  Settings Icon from Egor Rumyantsev. License through CC 3.0
-//
 
 import UIKit
 import ChameleonFramework
@@ -437,7 +435,7 @@ extension ClientTableViewController : UISearchBarDelegate {
     
     func searchBarLoadData() {
         clientArr = self.emp.clients.filter({ (client) -> Bool in
-            return client.person.lowercased().range(of: searchBar.text!) != nil
+            return client.person.range(of: searchBar.text!) != nil || client.person.lowercased().range(of: searchBar.text!) != nil
         })
         clientArr = clientArr.sorted(by: { (client1, client2) -> Bool in
             let client1Arr = organizationArray(for: client1)

@@ -102,7 +102,7 @@ class DirectionsViewController: UIViewController {
             progressBar.frame.size.width = UIScreen.main.bounds.width * (3/3)
         } else {
             self.directionsLabel.text = "Go to Lobby Doors"
-            self.img.image = UIImage(named: "doors")
+            self.img.image = UIImage(named: "doors2")
             progressBar.frame.size.width = UIScreen.main.bounds.width * 0
         }
     }

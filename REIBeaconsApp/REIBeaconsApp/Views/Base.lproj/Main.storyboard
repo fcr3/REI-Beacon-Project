@@ -206,7 +206,7 @@
         <scene sceneID="YsJ-Em-3S7">
             <objects>
                 <navigationController title="NavDirections" id="aan-FV-IKy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Directions" image="placeholder" id="S3q-kO-PY7"/>
+                    <tabBarItem key="tabBarItem" title="Directions" image="placeholder-1" id="S3q-kO-PY7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oQG-q6-j2H">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -312,7 +312,7 @@
         <scene sceneID="aNq-Sc-rji">
             <objects>
                 <navigationController title="NavMessages" id="cQd-4w-pSZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" image="email" id="vhD-kF-ity"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="email-1" id="vhD-kF-ity"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hMg-06-v2S">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -465,9 +465,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hurricane_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZwX-71-Pl3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="574"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4aa-dM-yiD">
+                                <rect key="frame" x="123.5" y="269.5" width="128" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hurricane_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZwX-71-Pl3">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="128" id="6DE-5V-AeT"/>
+                                            <constraint firstAttribute="height" constant="128" id="HY2-CD-sNu"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gth-hx-iMg">
                                 <rect key="frame" x="0.0" y="594" width="375" height="73"/>
                                 <subviews>
@@ -497,12 +506,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EmO-hr-zEh" firstAttribute="bottom" secondItem="Gth-hx-iMg" secondAttribute="bottom" id="0mD-TE-vMb"/>
-                            <constraint firstItem="Gth-hx-iMg" firstAttribute="top" secondItem="ZwX-71-Pl3" secondAttribute="bottom" id="4DX-i7-34b"/>
                             <constraint firstItem="Gth-hx-iMg" firstAttribute="leading" secondItem="EmO-hr-zEh" secondAttribute="leading" id="LnS-p5-TGR"/>
-                            <constraint firstItem="ZwX-71-Pl3" firstAttribute="leading" secondItem="EmO-hr-zEh" secondAttribute="leading" id="VWy-7M-u6d"/>
-                            <constraint firstItem="ZwX-71-Pl3" firstAttribute="trailing" secondItem="EmO-hr-zEh" secondAttribute="trailing" id="ahB-bl-dw5"/>
-                            <constraint firstItem="ZwX-71-Pl3" firstAttribute="top" secondItem="EmO-hr-zEh" secondAttribute="top" id="dox-FK-kGR"/>
-                            <constraint firstItem="Gth-hx-iMg" firstAttribute="top" secondItem="ZwX-71-Pl3" secondAttribute="bottom" id="eN4-ot-eeF"/>
+                            <constraint firstItem="4aa-dM-yiD" firstAttribute="centerY" secondItem="VuE-Ng-PLf" secondAttribute="centerY" id="MuE-PY-XkE"/>
+                            <constraint firstItem="4aa-dM-yiD" firstAttribute="centerX" secondItem="VuE-Ng-PLf" secondAttribute="centerX" id="PwM-Os-wAk"/>
                             <constraint firstItem="Gth-hx-iMg" firstAttribute="trailing" secondItem="EmO-hr-zEh" secondAttribute="trailing" id="hyl-qq-Wsa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EmO-hr-zEh"/>
@@ -519,8 +525,10 @@
     </scenes>
     <resources>
         <image name="email" width="24" height="24"/>
-        <image name="hurricane_logo" width="512" height="512"/>
+        <image name="email-1" width="24" height="24"/>
+        <image name="hurricane_logo" width="128" height="128"/>
         <image name="placeholder" width="24" height="24"/>
+        <image name="placeholder-1" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QUy-ai-fi3"/>

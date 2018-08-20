@@ -18,16 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hgreen512" translatesAutoresizingMaskIntoConstraints="NO" id="GFJ-dl-eET">
-                                <rect key="frame" x="16" y="144" width="343" height="379"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VAb-AW-v0y">
+                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hgreen512" translatesAutoresizingMaskIntoConstraints="NO" id="GFJ-dl-eET">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="225-RP-f2D"/>
+                                            <constraint firstAttribute="width" constant="100" id="4I1-KQ-xh5"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GFJ-dl-eET" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="124" id="7st-DP-vqz"/>
-                            <constraint firstItem="GFJ-dl-eET" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UDA-Fo-paZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GFJ-dl-eET" secondAttribute="bottom" constant="144" id="iiQ-V6-aKD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GFJ-dl-eET" secondAttribute="trailing" constant="16" id="yVN-xN-7HE"/>
+                            <constraint firstItem="VAb-AW-v0y" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AcE-tT-DSf"/>
+                            <constraint firstItem="VAb-AW-v0y" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Kgr-Du-U9B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +45,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hgreen512" width="512" height="512"/>
+        <image name="hgreen512" width="128" height="128"/>
     </resources>
 </document>

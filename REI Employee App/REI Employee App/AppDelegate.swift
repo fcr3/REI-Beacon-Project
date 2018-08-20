@@ -159,6 +159,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
         
+        application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
+        UIApplication.shared.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber + 1
+        
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         
@@ -178,6 +181,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: Handle data of notification
         
         application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
+        UIApplication.shared.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber + 1
         
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
@@ -228,7 +232,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Extra Functions
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        application.applicationIconBadgeNumber = 0
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     func applicationDidEnterBackground(_ application: UIApplication) {}
     func applicationWillResignActive(_ application: UIApplication) {}

@@ -5,9 +5,6 @@
 //  Created by Flaviano Reyes on 7/29/18.
 //  Copyright © 2018 Christian Reyes. All rights reserved.
 //
-//  Credits:
-//  Messaging Icon titled "Email free icon" by Chanut
-//  Directisons Icon titled "Placeholder free icon" by Smashicons
 
 import Foundation
 import Firebase
