@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "REI Dashboard",
+  "name": "Reyes Engineering, Inc. Dashboard",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "rei-blue.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }

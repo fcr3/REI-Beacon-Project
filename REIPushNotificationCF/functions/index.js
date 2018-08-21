@@ -70,6 +70,33 @@ exports.sendWantsDrinkNotification = functions.database.ref('/Clients/{clientID}
     } else {return null;}
   });
 
+exports.sendCheckInNotification = functions.database.ref('/Clients/{clientID}')
+  .onUpdate((change, context) => {
+    let emp = change.after.val().emp.split('.')[0];
+    let token = admin.database.ref("/Employees/" + emp).once('value');
+    if (change.before.val().checkedIn !== change.after.val().checkedIn && change.after.val().checkedIn === "Yes") {
+      return Promise.resolve(token).then(result => {
+        let extractedToken = result.val().token;
+
+        const payload = {
+          notification: {
+            title: "Client has Checked In ",
+            body: "Your client is ready for the meeting!"
+          }
+        };
+
+        return admin.messaging().sendToDevice([extractedToken], payload);
+      }).then(response => {
+        const tokensToRemove = [];
+        response.results.forEach((result, index) => {
+          const error = result.error;
+          if (error) {console.log(error);}
+        });
+        return null;
+      }).catch(error => {return console.log(error);});
+    } else {return null;}
+  });
+
 exports.sendLocationNotification = functions.database.ref('/Clients/{clientID}')
   .onUpdate((change, context) => {
 
