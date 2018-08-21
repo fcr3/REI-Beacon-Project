@@ -23,6 +23,7 @@ exports.sendAssistanceNotification = functions.database.ref('/Assistance')
       const payload = {
         notification: {
           title: "Attention Needed at the Front",
+          badge: "1",
           message: "Please go to the front to assist someone. Thank you!"
         }
       };
@@ -54,6 +55,7 @@ exports.sendWantsDrinkNotification = functions.database.ref('/Clients/{clientID}
         const payload = {
           notification: {
             title: "Client wants " + drink,
+            badge: "1",
             body: "Your client has requested a drink. Please prepare"
           }
         };
@@ -73,7 +75,7 @@ exports.sendWantsDrinkNotification = functions.database.ref('/Clients/{clientID}
 exports.sendCheckInNotification = functions.database.ref('/Clients/{clientID}')
   .onUpdate((change, context) => {
     let emp = change.after.val().emp.split('.')[0];
-    let token = admin.database.ref("/Employees/" + emp).once('value');
+    let token = admin.database().ref("/Employees/" + emp).once('value');
     if (change.before.val().checkedIn !== change.after.val().checkedIn && change.after.val().checkedIn === "Yes") {
       return Promise.resolve(token).then(result => {
         let extractedToken = result.val().token;
@@ -81,6 +83,7 @@ exports.sendCheckInNotification = functions.database.ref('/Clients/{clientID}')
         const payload = {
           notification: {
             title: "Client has Checked In ",
+            badge: "1",
             body: "Your client is ready for the meeting!"
           }
         };
@@ -123,6 +126,7 @@ exports.sendLocationNotification = functions.database.ref('/Clients/{clientID}')
         const payload = {
           notification: {
             title: "Client Location: " + location,
+            badge: "1",
             body: "Your client has moved. Please prepare meeting room and ammenities"
           }
         };
