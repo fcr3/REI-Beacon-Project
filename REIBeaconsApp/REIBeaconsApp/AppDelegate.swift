@@ -101,10 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        showNotification(with : "Waaaiiittt!",
-                         body: "I can help you out if you keep me open!")
-        
-        print(self.realm.isEmpty)
+        if !self.realm.objects(idPlaceholder.self).isEmpty {
+            showNotification(with : "Waaaiiittt!",
+                             body: "I can help you out if you keep me open!")
+        }
     }
     
     //MARK: - Bluetooth Status Tracking

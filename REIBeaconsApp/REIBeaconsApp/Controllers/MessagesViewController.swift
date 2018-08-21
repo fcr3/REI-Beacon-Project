@@ -49,7 +49,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         self.promptTableView.isHidden = true
         self.buttonView.isHidden = true
         if self.promptArray == nil || self.promptArray.count == 0 {self.promptArray = [""]}
-        if self.client.visitedLocs.range(of: "elevator") != nil && !configured {
+        if (self.client.visitedLocs.range(of: "elevator") != nil || self.client.visitedLocs.range(of: "front door") != nil)
+           && !configured {
             self.promptTableView.isHidden = false
             self.buttonView.isHidden = false
             if self.promptArray.index(of: "Okay! We will have it ready for you!") != nil {
@@ -106,7 +107,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func settingUpZones(z1: ProximityZone, z2: ProximityZone) {
         z1.onEnter = { attachment in
-            print("sensed")
             if self.client != nil {self.loadData()}
             else{
                 if let tbc = self.tabBarController as? MenuViewController {tbc.pressedLogOut = true}
@@ -116,7 +116,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         z2.onEnter = { attachment in
-            print("sensed")
             if self.client != nil {self.loadData()}
             else{
                 if let tbc = self.tabBarController as? MenuViewController {tbc.pressedLogOut = true}
@@ -153,8 +152,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func loadData(_ disappear : Bool = false) {
         self.promptTableView.isHidden = false
         self.buttonView.isHidden = disappear
-        if self.client.visitedLocs.range(of: "elevator") == nil || self.promptArray.count == 0
-            || self.promptArray[0] == "" {
+        if (self.client.visitedLocs.range(of: "elevator") == nil || self.client.visitedLocs.range(of: "front door") == nil)
+            && (self.promptArray.count == 0 || self.promptArray[0] == "") {
             if let tbc = tabBarController as? MenuViewController {
                 tbc.tabBar.items![1].badgeValue = " "
             }
