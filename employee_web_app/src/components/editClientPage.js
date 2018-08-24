@@ -24,7 +24,7 @@ class EditClientPage extends Component {
   componentWillUnmount() {
     this.props.selectClient(null);
     if (this.props.selected === null) {return;}
-    database.ref('/Clients' + this.state.id).off()
+    database.ref('/Clients/' + this.state.id).off()
   }
 
   componentWillReceiveProps(newProps) {
@@ -34,7 +34,7 @@ class EditClientPage extends Component {
     this.setState({
       ...newProps.selected
     });
-    if (newProps.selected !== null) {
+    if (newProps.selected !== null && newProps.selected !== undefined) {
       this.setupClientListener(newProps.selected.id);
     }
   }
@@ -43,7 +43,7 @@ class EditClientPage extends Component {
     database.ref('/Clients/' + id).on('value', (snapshot) => {
       if (snapshot.val() === null) {return;}
       else {
-        this.props.getClients();
+        this.props.updateClient(snapshot.val());
         this.setState({...snapshot.val()});
       }
     });
@@ -76,7 +76,6 @@ class EditClientPage extends Component {
     let client = {...this.state};
     delete client["listener"];
     this.props.updateClient(client);
-    this.props.getClients();
   }
 
   render() {

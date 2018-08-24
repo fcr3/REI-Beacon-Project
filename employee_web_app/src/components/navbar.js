@@ -13,11 +13,7 @@ import {Link, withRouter, Redirect} from 'react-router-dom';
 class NavBar extends Component {
   constructor(props) {
     super(props);
-
-    //console.log(window.location.pathname);
-
     this.toMenuPage = this.toMenuPage.bind(this);
-
     let selectedItem = ""
     let ind = 0;
     let pic = null;

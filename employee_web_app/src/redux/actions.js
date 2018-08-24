@@ -230,7 +230,8 @@ export function addClient(client, emp) {
       reference.set({...client, id: reference.key}, (error) => {
           if (error) {console.log(error);}
           let email = auth.currentUser.email.split(".")[0] + "";
-          let clientIDlist = emp.clientIds.split(",");
+          let clientIDlist = [];
+          if (emp.clientIds.length > 0) {clientIDlist = emp.clientIds.split(",");}
           clientIDlist.push(reference.key);
           emp.clientIds = clientIDlist.join(",");
           database.ref('/Employees/' + email).set(emp, (error) => {
@@ -278,8 +279,7 @@ export function getClients() {
         clientIds = snapshot.val().clientIds.split(",");
         clientIds.forEach((child, index) => {
           database.ref('/Clients/' + child).once('value').then(snapshot => {
-            if (snapshot.val() === null) {return}
-            clients.push(snapshot.val());
+            if (snapshot.val() !== null && snapshot.val().id !== "Genesis") {clients.push(snapshot.val())};
             if (clients.length === clientIds.length) {
               clients.sort((a, b) => {
                 if (a.date > b.date) {return 1;}
