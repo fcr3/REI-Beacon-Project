@@ -18,7 +18,6 @@ class ClientListPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getClients();
     this.listenForNewClients();
   }
 
@@ -43,17 +42,34 @@ class ClientListPage extends Component {
       else {
         let newListenerArray = [database.ref('/Employees/' + email)];
         let clients = snapshot.val().clientIds.split(",");
-        clients.forEach((val) => {newListenerArray.push(database.ref('/Clients/' + val));});
+        clients.forEach((val) => {
+          if (val === "Genesis") {return;}
+          newListenerArray.push(database.ref('/Clients/' + val));
+        });
 
         newListenerArray.forEach((val, index) => {
           if (index === 0) {
             val.on('value', (snapshot) => {
-              this.props.getClients();
+              if (!snapshot || !snapshot.val()) {return;}
+              if (this.props.emp === null || this.props.emp === undefined) {return;}
+              if (snapshot.val().clientIds !== this.props.emp.clientIds) {
+                this.props.getClients();
+              }
             });
           } else {
             val.on('value', (snapshot) => {
-              if (!snapshot || !snapshot.val()) {this.props.getClients();}
-              else {this.props.addUpdatedClient({...snapshot.val(), updated: "Updated"});}
+              if (!snapshot || !snapshot.val()) {return;}
+              else {
+                let client = this.props.clients.filter((val) => val.id === snapshot.val().id)[0];
+                if (client === undefined || client === null) {return;}
+                for (var key in snapshot.val()) {
+                  if (client[key] !== snapshot.val()[key] && (key === "loc" || key === "drink")) {
+                    this.props.addUpdatedClient({...snapshot.val(), updated: "Updated"});
+                    return;
+                  }
+                }
+                this.props.addUpdatedClient({...client, ...snapshot.val()});
+              }
             });
           }
         });
@@ -71,13 +87,15 @@ class ClientListPage extends Component {
   deleteClient(e, client) {
     e.preventDefault();
     e.stopPropagation();
+    database.ref('/Clients' + client.id).off();
     this.props.deleteClient(client, this.props.emp);
   }
 
   render() {
-    let renderedClients = (<ClientCell client={{name: "No Clients Created"}} key={0} />);
+    let renderedClients = null;
     if (this.props.clients && this.props.clients.length !== 0) {
       renderedClients = this.props.clients.map((val, index) => {
+        if (val.Genesis !== undefined) {return null;}
         return (<ClientCell client={val} func={(e) => this.goToEditPage(val)}
                            del={(e) => this.deleteClient(e, val)} key={index} newAttr={val.updated}/>);
       });

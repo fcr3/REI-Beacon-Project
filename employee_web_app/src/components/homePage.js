@@ -32,8 +32,10 @@ class HomePage extends Component {
         }
       });
     }
-    else {this.props.getEmpAndUpdateCurrent();}
-    this.props.getClients();
+    else {
+      this.props.getEmpAndUpdateCurrent();
+      this.props.getClients();
+    }
   }
 
   componentWillUnmount() {
